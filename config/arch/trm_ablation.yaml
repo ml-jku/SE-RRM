@@ -1,4 +1,4 @@
-name: recursive_reasoning.trm_hier6@TinyRecursiveReasoningModel_ACTV1
+name: recursive_reasoning.trm_ablation@TinyRecursiveReasoningModel_ACTV1
 loss:
   name: losses@ACTLossHead
   loss_type: stablemax_cross_entropy
@@ -18,9 +18,10 @@ expansion: 4
 
 puzzle_emb_ndim: ${.hidden_size}
 
-pos_encodings: rope
+pos_encodings: rope2d
 forward_dtype: bfloat16
 
 mlp_t: False # use mlp on L instead of transformer
 puzzle_emb_len: 16 # if non-zero, its specified to this value
-no_ACT_continue: True # No continue ACT loss, only use the sigmoid of the halt which makes much more sense
+no_ACT_continue: True
+dropout: 0.0

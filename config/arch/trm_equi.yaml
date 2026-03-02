@@ -1,0 +1,28 @@
+name: recursive_reasoning.trm_equi@SERRM
+loss:
+  name: losses@ACTLossHead
+  loss_type: stablemax_cross_entropy
+
+halt_exploration_prob: 0.1 # This is used for random stopping instead of q-learning
+halt_max_steps: 16
+puzzle_emb_ndim: 0
+
+H_cycles: 3
+L_cycles: 4
+
+H_layers: 0
+L_layers: 2
+
+hidden_size: 256
+num_heads: 4 # number of heads for position-dimension
+num_heads_t: 2 # number of heads for symbol-dimension
+head_dim: 64
+head_dim_t: 64
+expansion: 4
+
+pos_encodings: rope2d
+forward_dtype: bfloat16
+
+equivariant_symbols: True
+add_tokens: 0 # additional tokens can be used instead of the puzzle_embedding e.g. for Sudoku
+dropout: 0
