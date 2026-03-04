@@ -1,5 +1,11 @@
 # SE-RRM
 
+## Symbol-Equivariant Recurrent Reasoning Models
+
+[![arXiv](https://img.shields.io/badge/arXiv-2603.02193-b31b1b.svg)](https://arxiv.org/abs/2603.02193)
+
+We introduce **Symbol-Equivariant Recurrent Reasoning Models** (SE-RRMs), which enforce permutation equivariance at the architectural level through symbol-equivariant layers, guaranteeing identical solutions under symbol or color permutations. SE-RRMs outperform prior RRMs on 9×9 Sudoku and generalize from just training on 9×9 to smaller 4×4 **and** larger 16×16 and 25×25 instances, to which existing RRMs cannot extrapolate. On ARC-AGI-1 and ARC-AGI-2, SE-RRMs achieve competitive performance with substantially less data augmentation and only 2 million parameters, demonstrating that explicitly encoding symmetry improves the robustness and scalability of neural reasoning.
+
 ![](./assets/se-rrm.png)
 
 ### Requirements
@@ -72,7 +78,7 @@ eval_interval=800 arch.pos_encodings=rope2d arch.puzzle_emb_ndim=1 lr=0.0005 puz
 
 ```bash
 python pretrain.py arch=trm_equi data_paths="[data/maze-30x30-hard-1k]" evaluators="[]" epochs=10000 eval_interval=2000 \
-arch.equivariant_symbols=False lr=0.0005 weight_decay=1 global_batch_size=64
+ema=True arch.equivariant_symbols=False lr=0.0005 weight_decay=1 global_batch_size=64
 
 ```
 
